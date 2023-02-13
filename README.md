@@ -1,4 +1,4 @@
-# todolist
+# NewsApp
 
 A new Flutter project.
 
