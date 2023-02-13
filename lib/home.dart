@@ -149,12 +149,8 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      Category(Query: navBarItem[index])));
-                        },
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Category(Query: navBarItem[index])));
+                          },
                         child: Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 
+
 class NewsView extends StatefulWidget {
   final String url;
   NewsView(this.url);
@@ -12,8 +13,8 @@ class NewsView extends StatefulWidget {
 }
 
 class _NewsViewState extends State<NewsView> {
- late String finalUrl;
   final Completer<WebViewController> controller = Completer<WebViewController>();
+  late String finalUrl;
   @override
   void initState() {
     if(widget.url.toString().contains("http://")){
@@ -34,7 +35,7 @@ class _NewsViewState extends State<NewsView> {
       body:Container(
         child: WebView(
           initialUrl:finalUrl,
-          javascriptMode:JavaScriptMode.unrestricted,
+          javascriptMode:JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController){
             setState(() {
               controller.complete(webViewController);
@@ -46,3 +47,4 @@ class _NewsViewState extends State<NewsView> {
   }
 }
 
+//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 Access Token for github

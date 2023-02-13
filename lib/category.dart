@@ -4,6 +4,8 @@ import 'dart:convert';
 
 import 'package:todolist/model.dart';
 
+import 'NewsView.dart';
+
 
 
 class Category extends StatefulWidget {
@@ -80,49 +82,54 @@ class _CategoryState extends State<Category> {
                       return Container(
                           margin:EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                           child:
-                          Card(
-                            shape:RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            elevation:1.0,
-                            child: Stack(
-                              children: [
-                                ClipRRect(
-                                    borderRadius:BorderRadius.circular(15),
-                                    child: Image.network(newsModelList[index].newsImg,fit:BoxFit.fitHeight,height:230,width:double.infinity)),
-                                Positioned(
-                                  left:0,
-                                  right:0,
-                                  bottom:0,
-                                  child: Container(
-                                    decoration:BoxDecoration(
-                                        borderRadius:BorderRadius.circular(15),
-                                        gradient:LinearGradient(
-                                          colors:[Colors.black12.withOpacity(0),
-                                            Colors.black,],
-                                          begin:Alignment.topCenter,
-                                          end:Alignment.bottomCenter,
-                                        )
+                          InkWell(
+                            onTap:() {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => NewsView(newsModelList[index].newsUrl)));
+                            },
+                            child: Card(
+                              shape:RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              elevation:1.0,
+                              child: Stack(
+                                children: [
+                                  ClipRRect(
+                                      borderRadius:BorderRadius.circular(15),
+                                      child: Image.network(newsModelList[index].newsImg,fit:BoxFit.fitHeight,height:230,width:double.infinity)),
+                                  Positioned(
+                                    left:0,
+                                    right:0,
+                                    bottom:0,
+                                    child: Container(
+                                      decoration:BoxDecoration(
+                                          borderRadius:BorderRadius.circular(15),
+                                          gradient:LinearGradient(
+                                            colors:[Colors.black12.withOpacity(0),
+                                              Colors.black,],
+                                            begin:Alignment.topCenter,
+                                            end:Alignment.bottomCenter,
+                                          )
+                                      ),
+                                      padding:EdgeInsets.fromLTRB(10,15,10,8),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(newsModelList[index].newsHead,
+                                              style:TextStyle(
+                                                color:Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          Text(newsModelList[index].newsDes.length >50? "${newsModelList[index].newsDes.substring(0,55)} ":newsModelList[index].newsDes ,
+                                              style:TextStyle(
+                                                color:Colors.white,
+                                              ))
+                                        ],
+                                      ),
                                     ),
-                                    padding:EdgeInsets.fromLTRB(10,15,10,8),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(newsModelList[index].newsHead,
-                                            style:TextStyle(
-                                              color:Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            )),
-                                        Text(newsModelList[index].newsDes.length >50? "${newsModelList[index].newsDes.substring(0,55)} ":newsModelList[index].newsDes ,
-                                            style:TextStyle(
-                                              color:Colors.white,
-                                            ))
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
+                                  )
+                                ],
+                              ),
                             ),
                           )
                       );
